@@ -56,6 +56,11 @@
   --saffron-wash: color-mix(in srgb, var(--color-saffron) 10%, transparent);
   --paper-fade: color-mix(in srgb, var(--color-paper) 72%, transparent);
 
+  /* ---- Scrollbar ------------------------------------------------------- */
+  --scrollbar-track: var(--color-paper-warm);
+  --scrollbar-thumb: color-mix(in srgb, var(--color-gold) 72%, var(--color-maroon));
+  --scrollbar-thumb-hover: var(--color-saffron);
+
   /* ---- Shadows --------------------------------------------------------- */
   --shadow-deep: 0 40px 100px color-mix(in srgb, var(--color-black) 28%, transparent);
   --shadow-soft: 0 24px 70px color-mix(in srgb, var(--color-black) 13%, transparent);

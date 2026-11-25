@@ -527,28 +527,6 @@
       }
     ]
   },
-  "logo": {
-    "width": 1254,
-    "height": 1254,
-    "default": "logo.webp",
-    "variants": [
-      {
-        "width": 320,
-        "height": 320,
-        "file": "logo-320.webp"
-      },
-      {
-        "width": 640,
-        "height": 640,
-        "file": "logo-640.webp"
-      },
-      {
-        "width": 1254,
-        "height": 1254,
-        "file": "logo-1254.webp"
-      }
-    ]
-  },
   "event-katha": {
     "width": 1204,
     "height": 1600,

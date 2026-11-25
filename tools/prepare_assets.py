@@ -54,7 +54,6 @@ ASSETS = {
     "press-culture": ("WhatsApp Image 2026-11-24 at 11.04.34 AM.jpeg", "portrait"),
     "press-shivratri": ("WhatsApp Image 2026-11-24 at 11.04.25 AM (2).jpeg", "landscape"),
     "press-unity": ("WhatsApp Image 2026-11-24 at 11.04.25 AM.jpeg", "portrait"),
-    "logo": ("WhatsApp Image 2026-11-24 at 11.04.38 AM.jpeg", "logo"),
     # current event poster (lives in the project root)
     "event-katha": ("../currentEvent.png", "event"),
 }
@@ -63,7 +62,6 @@ WIDTHS = {
     "portrait": [640, 1080, 1500],
     "landscape": [640, 1080, 1600],
     "square": [640, 1080, 1400],
-    "logo": [320, 640, 1254],
     "event": [480, 800, 1204],
 }
 
@@ -102,8 +100,6 @@ def build_image(name: str, src_name: str, kind: str) -> None:
     generated = [g for g in generated if not (g["width"] in seen or seen.add(g["width"]))]
     # Also save a default file for direct use.
     default_width = min(original_w, 1600 if kind != "portrait" else 1500)
-    if kind == "logo":
-        default_width = min(original_w, 640)
     if kind == "event":
         default_width = min(original_w, 1204)
     height = round(original_h * (default_width / original_w))

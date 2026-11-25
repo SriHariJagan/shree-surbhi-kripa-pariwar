@@ -30,3 +30,6 @@ Desktop.ini
 *.log
 auth.log
 auth.err
+
+# Internal planning notes (kept locally, not part of the website)
+/WEBSITE_PLAN.md
