@@ -19,6 +19,7 @@ python -m http.server 8000      # preview at http://localhost:8000
 All pages are plain HTML/CSS/JS — no server-side runtime is required.
 
 Repository: <https://github.com/SriHariJagan/shree-surbhi-kripa-pariwar>
+Live site: <https://sriharijagan.github.io/shree-surbhi-kripa-pariwar/>
 
 ## 1. Change the colours, fonts and spacing
 
@@ -135,8 +136,10 @@ Upload the repository root (including `assets/` and `hi/`) to any static host.
 No build step is needed on the server. HTTPS is recommended, especially for the
 `upi:` links and the copy-to-clipboard buttons.
 
-The generated HTML is committed, so GitHub Pages can serve the site straight
-from the repository: **Settings → Pages → Deploy from a branch → `main` / `(root)`**.
+The generated HTML is committed and GitHub Pages is already configured to serve
+the site from **`main` / `(root)`** at
+<https://sriharijagan.github.io/shree-surbhi-kripa-pariwar/>. Pushing to `main`
+publishes the update automatically.
 
 Source photography (`images/`), local QA screenshots (`tools/qa/`) and the
 original `image.png`, `qrCode.png` and `currentEvent.png` are kept out of Git by
