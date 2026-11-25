@@ -1,0 +1,120 @@
+/* ==========================================================================
+   SHREE SURBHI KRIPA PARIWAR — THEME TOKENS
+   --------------------------------------------------------------------------
+   This is the ONLY file you need to edit to change the visual identity.
+   Every colour, font, size, radius and shadow used by the site is defined
+   here as a CSS custom property. No colour is hard-coded in main.css.
+   ========================================================================== */
+
+:root {
+  /* ---- Typography ------------------------------------------------------ */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-hindi: "Tiro Devanagari Hindi", "Noto Serif Devanagari", "Nirmala UI", serif;
+  --font-body: "Mukta", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --step--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.88rem);
+  --step-0: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem);
+  --step-1: clamp(1.12rem, 1.02rem + 0.45vw, 1.3rem);
+  --step-2: clamp(1.35rem, 1.15rem + 0.85vw, 1.8rem);
+  --step-3: clamp(1.7rem, 1.35rem + 1.55vw, 2.6rem);
+  --step-4: clamp(2rem, 1.4rem + 2.35vw, 3.8rem);
+  --step-5: clamp(2.2rem, 1.35rem + 4.2vw, 5.8rem);
+  --step-6: clamp(2.9rem, 1.2rem + 6.2vw, 7rem);
+
+  /* ---- Core palette ---------------------------------------------------- */
+  --color-paper: #f4ecdd;
+  --color-paper-raised: #fbf6ec;
+  --color-paper-deep: #e8d8bf;
+  --color-paper-warm: #efe2cd;
+
+  --color-ink: #241512;
+  --color-ink-muted: #6d5a50;
+  --color-ink-faint: #97857a;
+
+  --color-maroon: #340d0d;
+  --color-maroon-deep: #210606;
+  --color-maroon-soft: #4e1917;
+  --color-saffron: #c65a1c;
+  --color-marigold: #e6a13b;
+  --color-gold: #b4873e;
+  --color-gold-soft: #d9ba7e;
+  --color-green: #2b4934;
+  --color-white: #fffdf8;
+  --color-black: #120b09;
+
+  /* ---- Derived colours (automatically follow the palette above) -------- */
+  --line: color-mix(in srgb, var(--color-maroon) 17%, transparent);
+  --line-strong: color-mix(in srgb, var(--color-maroon) 32%, transparent);
+  --line-light: color-mix(in srgb, var(--color-paper-raised) 22%, transparent);
+  --line-gold: color-mix(in srgb, var(--color-gold) 52%, transparent);
+  --overlay: color-mix(in srgb, var(--color-maroon-deep) 76%, transparent);
+  --overlay-soft: color-mix(in srgb, var(--color-maroon-deep) 42%, transparent);
+  --paper-veil: color-mix(in srgb, var(--color-paper-raised) 88%, transparent);
+  --ink-veil: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --gold-wash: color-mix(in srgb, var(--color-gold) 13%, transparent);
+  --saffron-wash: color-mix(in srgb, var(--color-saffron) 10%, transparent);
+  --paper-fade: color-mix(in srgb, var(--color-paper) 72%, transparent);
+
+  /* ---- Shadows --------------------------------------------------------- */
+  --shadow-deep: 0 40px 100px color-mix(in srgb, var(--color-black) 28%, transparent);
+  --shadow-soft: 0 24px 70px color-mix(in srgb, var(--color-black) 13%, transparent);
+  --shadow-card: 0 14px 40px color-mix(in srgb, var(--color-black) 8%, transparent);
+  --glow-gold: 0 0 0 1px var(--line-gold), 0 0 60px color-mix(in srgb, var(--color-gold) 16%, transparent);
+
+  /* ---- Layout ---------------------------------------------------------- */
+  --container: 1240px;
+  --container-narrow: 960px;
+  --container-wide: 1440px;
+  --gutter: clamp(20px, 4.2vw, 68px);
+  --section-y: clamp(68px, 8vw, 116px);
+  --section-y-tight: clamp(46px, 5.4vw, 78px);
+  --header-height: 88px;
+  --topbar-height: 38px;
+
+  /* ---- Shape & motion -------------------------------------------------- */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-pill: 999px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --speed-fast: 0.28s;
+  --speed: 0.65s;
+  --speed-slow: 1.2s;
+
+  /* ---- Decorative ------------------------------------------------------ */
+  --grain-opacity: 0.035;
+  --jali-size: 72px;
+  --jali-opacity: 0.07;
+  --hero-image-position: 50% 28%;
+  color-scheme: light;
+}
+
+/* Optional alternate themes. Add data-theme="..." to <html> to preview.
+   The site ships with the "saffron" theme above. */
+html[data-theme="indigo"] {
+  --color-paper: #f0ece3;
+  --color-paper-raised: #faf7f0;
+  --color-paper-deep: #ded6c6;
+  --color-maroon: #111a33;
+  --color-maroon-deep: #0a1020;
+  --color-maroon-soft: #1d2a4a;
+  --color-saffron: #b3481e;
+  --color-marigold: #d99a3e;
+  --color-gold: #a98a4a;
+  --color-gold-soft: #d5bf8b;
+}
+
+html[data-theme="forest"] {
+  --color-paper: #eef0e6;
+  --color-paper-raised: #f8f8f0;
+  --color-paper-deep: #d7dccb;
+  --color-maroon: #172b1f;
+  --color-maroon-deep: #0c1a12;
+  --color-maroon-soft: #264434;
+  --color-saffron: #b9591d;
+  --color-marigold: #dca344;
+  --color-gold: #a98c4d;
+  --color-gold-soft: #d4c08c;
+}

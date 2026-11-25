@@ -1,0 +1,1 @@
+upi://pay?pa=demo@upi&pn=Shree%20Surbhi%20Kripa%20Pariwar&cu=INR

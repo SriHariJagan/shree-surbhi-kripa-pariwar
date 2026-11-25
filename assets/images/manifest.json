@@ -1,0 +1,574 @@
+{
+  "acharya-river": {
+    "width": 3072,
+    "height": 4096,
+    "default": "acharya-river.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 853,
+        "file": "acharya-river-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 1440,
+        "file": "acharya-river-1080.webp"
+      },
+      {
+        "width": 1500,
+        "height": 2000,
+        "file": "acharya-river-1500.webp"
+      }
+    ]
+  },
+  "cow-embrace": {
+    "width": 988,
+    "height": 1600,
+    "default": "cow-embrace.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 1036,
+        "file": "cow-embrace-640.webp"
+      },
+      {
+        "width": 988,
+        "height": 1600,
+        "file": "cow-embrace-988.webp"
+      }
+    ]
+  },
+  "acharya-portrait": {
+    "width": 632,
+    "height": 1390,
+    "default": "acharya-portrait.webp",
+    "variants": [
+      {
+        "width": 632,
+        "height": 1390,
+        "file": "acharya-portrait-632.webp"
+      }
+    ]
+  },
+  "acharya-orange": {
+    "width": 953,
+    "height": 1289,
+    "default": "acharya-orange.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 866,
+        "file": "acharya-orange-640.webp"
+      },
+      {
+        "width": 953,
+        "height": 1289,
+        "file": "acharya-orange-953.webp"
+      }
+    ]
+  },
+  "acharya-stage": {
+    "width": 899,
+    "height": 1600,
+    "default": "acharya-stage.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 1139,
+        "file": "acharya-stage-640.webp"
+      },
+      {
+        "width": 899,
+        "height": 1600,
+        "file": "acharya-stage-899.webp"
+      }
+    ]
+  },
+  "acharya-contemplation": {
+    "width": 1080,
+    "height": 924,
+    "default": "acharya-contemplation.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 548,
+        "file": "acharya-contemplation-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 924,
+        "file": "acharya-contemplation-1080.webp"
+      }
+    ]
+  },
+  "gau-seva-black-cow": {
+    "width": 903,
+    "height": 1280,
+    "default": "gau-seva-black-cow.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 907,
+        "file": "gau-seva-black-cow-640.webp"
+      },
+      {
+        "width": 903,
+        "height": 1280,
+        "file": "gau-seva-black-cow-903.webp"
+      }
+    ]
+  },
+  "gau-seva-brown-cow": {
+    "width": 900,
+    "height": 1600,
+    "default": "gau-seva-brown-cow.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 1138,
+        "file": "gau-seva-brown-cow-640.webp"
+      },
+      {
+        "width": 900,
+        "height": 1600,
+        "file": "gau-seva-brown-cow-900.webp"
+      }
+    ]
+  },
+  "community-event": {
+    "width": 1600,
+    "height": 1068,
+    "default": "community-event.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 427,
+        "file": "community-event-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 721,
+        "file": "community-event-1080.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1068,
+        "file": "community-event-1600.webp"
+      }
+    ]
+  },
+  "youth-temple": {
+    "width": 1068,
+    "height": 1600,
+    "default": "youth-temple.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 959,
+        "file": "youth-temple-640.webp"
+      },
+      {
+        "width": 1068,
+        "height": 1600,
+        "file": "youth-temple-1068.webp"
+      }
+    ]
+  },
+  "youth-group": {
+    "width": 1600,
+    "height": 1200,
+    "default": "youth-group.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 480,
+        "file": "youth-group-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 810,
+        "file": "youth-group-1080.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1200,
+        "file": "youth-group-1600.webp"
+      }
+    ]
+  },
+  "temple-visit": {
+    "width": 964,
+    "height": 903,
+    "default": "temple-visit.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 600,
+        "file": "temple-visit-640.webp"
+      },
+      {
+        "width": 964,
+        "height": 903,
+        "file": "temple-visit-964.webp"
+      }
+    ]
+  },
+  "honours-shawl": {
+    "width": 1200,
+    "height": 1600,
+    "default": "honours-shawl.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 853,
+        "file": "honours-shawl-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 1440,
+        "file": "honours-shawl-1080.webp"
+      },
+      {
+        "width": 1200,
+        "height": 1600,
+        "file": "honours-shawl-1200.webp"
+      }
+    ]
+  },
+  "civic-desk": {
+    "width": 1015,
+    "height": 1075,
+    "default": "civic-desk.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 678,
+        "file": "civic-desk-640.webp"
+      },
+      {
+        "width": 1015,
+        "height": 1075,
+        "file": "civic-desk-1015.webp"
+      }
+    ]
+  },
+  "civic-portrait": {
+    "width": 1560,
+    "height": 1040,
+    "default": "civic-portrait.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 427,
+        "file": "civic-portrait-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 720,
+        "file": "civic-portrait-1080.webp"
+      },
+      {
+        "width": 1560,
+        "height": 1040,
+        "file": "civic-portrait-1560.webp"
+      }
+    ]
+  },
+  "satsang-seated": {
+    "width": 1600,
+    "height": 1200,
+    "default": "satsang-seated.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 480,
+        "file": "satsang-seated-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 810,
+        "file": "satsang-seated-1080.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1200,
+        "file": "satsang-seated-1600.webp"
+      }
+    ]
+  },
+  "elder-sadhu": {
+    "width": 932,
+    "height": 1599,
+    "default": "elder-sadhu.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 1098,
+        "file": "elder-sadhu-640.webp"
+      },
+      {
+        "width": 932,
+        "height": 1599,
+        "file": "elder-sadhu-932.webp"
+      }
+    ]
+  },
+  "cloth-offering": {
+    "width": 1200,
+    "height": 1600,
+    "default": "cloth-offering.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 853,
+        "file": "cloth-offering-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 1440,
+        "file": "cloth-offering-1080.webp"
+      },
+      {
+        "width": 1200,
+        "height": 1600,
+        "file": "cloth-offering-1200.webp"
+      }
+    ]
+  },
+  "with-swami": {
+    "width": 1600,
+    "height": 1068,
+    "default": "with-swami.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 427,
+        "file": "with-swami-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 721,
+        "file": "with-swami-1080.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1068,
+        "file": "with-swami-1600.webp"
+      }
+    ]
+  },
+  "senior-swami": {
+    "width": 728,
+    "height": 1161,
+    "default": "senior-swami.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 1021,
+        "file": "senior-swami-640.webp"
+      },
+      {
+        "width": 728,
+        "height": 1161,
+        "file": "senior-swami-728.webp"
+      }
+    ]
+  },
+  "hindu-sammelan": {
+    "width": 928,
+    "height": 1438,
+    "default": "hindu-sammelan.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 992,
+        "file": "hindu-sammelan-640.webp"
+      },
+      {
+        "width": 928,
+        "height": 1438,
+        "file": "hindu-sammelan-928.webp"
+      }
+    ]
+  },
+  "civic-meeting": {
+    "width": 1420,
+    "height": 1600,
+    "default": "civic-meeting.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 721,
+        "file": "civic-meeting-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 1217,
+        "file": "civic-meeting-1080.webp"
+      },
+      {
+        "width": 1420,
+        "height": 1600,
+        "file": "civic-meeting-1420.webp"
+      }
+    ]
+  },
+  "vishwa-shanti": {
+    "width": 403,
+    "height": 1339,
+    "default": "vishwa-shanti.webp",
+    "variants": [
+      {
+        "width": 403,
+        "height": 1339,
+        "file": "vishwa-shanti-403.webp"
+      }
+    ]
+  },
+  "press-feature": {
+    "width": 1080,
+    "height": 450,
+    "default": "press-feature.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 267,
+        "file": "press-feature-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 450,
+        "file": "press-feature-1080.webp"
+      }
+    ]
+  },
+  "press-cow": {
+    "width": 1021,
+    "height": 1280,
+    "default": "press-cow.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 802,
+        "file": "press-cow-640.webp"
+      },
+      {
+        "width": 1021,
+        "height": 1280,
+        "file": "press-cow-1021.webp"
+      }
+    ]
+  },
+  "press-seva": {
+    "width": 1056,
+    "height": 1600,
+    "default": "press-seva.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 970,
+        "file": "press-seva-640.webp"
+      },
+      {
+        "width": 1056,
+        "height": 1600,
+        "file": "press-seva-1056.webp"
+      }
+    ]
+  },
+  "press-culture": {
+    "width": 998,
+    "height": 1280,
+    "default": "press-culture.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 821,
+        "file": "press-culture-640.webp"
+      },
+      {
+        "width": 998,
+        "height": 1280,
+        "file": "press-culture-998.webp"
+      }
+    ]
+  },
+  "press-shivratri": {
+    "width": 1046,
+    "height": 1030,
+    "default": "press-shivratri.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 630,
+        "file": "press-shivratri-640.webp"
+      },
+      {
+        "width": 1046,
+        "height": 1030,
+        "file": "press-shivratri-1046.webp"
+      }
+    ]
+  },
+  "press-unity": {
+    "width": 807,
+    "height": 1512,
+    "default": "press-unity.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 1199,
+        "file": "press-unity-640.webp"
+      },
+      {
+        "width": 807,
+        "height": 1512,
+        "file": "press-unity-807.webp"
+      }
+    ]
+  },
+  "logo": {
+    "width": 1254,
+    "height": 1254,
+    "default": "logo.webp",
+    "variants": [
+      {
+        "width": 320,
+        "height": 320,
+        "file": "logo-320.webp"
+      },
+      {
+        "width": 640,
+        "height": 640,
+        "file": "logo-640.webp"
+      },
+      {
+        "width": 1254,
+        "height": 1254,
+        "file": "logo-1254.webp"
+      }
+    ]
+  },
+  "event-katha": {
+    "width": 1204,
+    "height": 1600,
+    "default": "event-katha.webp",
+    "variants": [
+      {
+        "width": 480,
+        "height": 638,
+        "file": "event-katha-480.webp"
+      },
+      {
+        "width": 800,
+        "height": 1063,
+        "file": "event-katha-800.webp"
+      },
+      {
+        "width": 1204,
+        "height": 1600,
+        "file": "event-katha-1204.webp"
+      }
+    ]
+  }
+}

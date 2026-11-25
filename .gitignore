@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+.idea/
+
+# Local QA output (screenshots and temporary reports)
+/tools/qa/
+
+# Source material stays out of the public repo:
+# raw WhatsApp photos and the private account screenshots in images/,
+# plus the original logo, QR and poster sources.
+/images/
+/image.png
+/qrCode.png
+/currentEvent.png
+
+# Logs
+*.log
+auth.log
+auth.err
