@@ -261,7 +261,7 @@ PAGES["home"] = {
         "poster_alt": "Poster for Shrimad Bhagwat Katha from 12 to 19 December 2026 at Shree Krishna Mandir, Sector 10A, Gurugram.",
         "view_poster": "View full poster",
         "contact_label": "Event helpline",
-        "phones": ["98184 35640", "98688 14492", "95607 67167", "98144 60936"],
+        "phones": ["99581 08003", "85279 31666"],
     },
 }
 
@@ -704,7 +704,7 @@ PAGES["contact"] = {
         "items": [
             ("Visit", "Gurugram, Haryana, India", "Exact location shared on request"),
             ("Write", '<a href="mailto:shreesurbhikripapariwar@gmail.com">shreesurbhikripapariwar@gmail.com</a>', "We reply as soon as we can"),
-            ("Call / WhatsApp", '<a href="tel:+919818435640">98184 35640</a> · <a href="tel:+919868814492">98688 14492</a> · <a href="tel:+919560767167">95607 67167</a> · <a href="tel:+919814460936">98144 60936</a>', "Event helpline · Bhagwat Katha 2026"),
+            ("Call / WhatsApp", '<a href="tel:+919958108003">99581 08003</a> · <a href="tel:+918527931666">85279 31666</a>', "Event helpline · Bhagwat Katha 2026"),
             ("Hours", "Mon–Sun · 7:00 AM – 6:00 PM", "Visits by appointment"),
         ],
         "social_label": "Follow",
