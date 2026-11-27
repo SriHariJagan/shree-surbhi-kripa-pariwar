@@ -548,5 +548,71 @@
         "file": "event-katha-1204.webp"
       }
     ]
+  },
+  "agnihotra-yagya": {
+    "width": 1280,
+    "height": 1707,
+    "default": "agnihotra-yagya.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 854,
+        "file": "agnihotra-yagya-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 1440,
+        "file": "agnihotra-yagya-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 1707,
+        "file": "agnihotra-yagya-1280.webp"
+      }
+    ]
+  },
+  "tree-plantation": {
+    "width": 1280,
+    "height": 853,
+    "default": "tree-plantation.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 426,
+        "file": "tree-plantation-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 720,
+        "file": "tree-plantation-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "file": "tree-plantation-1280.webp"
+      }
+    ]
+  },
+  "community-meal": {
+    "width": 1280,
+    "height": 1271,
+    "default": "community-meal.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 636,
+        "file": "community-meal-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 1072,
+        "file": "community-meal-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 1271,
+        "file": "community-meal-1280.webp"
+      }
+    ]
   }
 }

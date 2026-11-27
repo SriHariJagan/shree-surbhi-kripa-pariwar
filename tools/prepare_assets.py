@@ -56,6 +56,10 @@ ASSETS = {
     "press-unity": ("WhatsApp Image 2026-11-24 at 11.04.25 AM.jpeg", "portrait"),
     # current event poster (lives in the project root)
     "event-katha": ("../currentEvent.png", "event"),
+    # openly licensed photographs (see credits on the pages that use them)
+    "agnihotra-yagya": ("../assets/source/agnihotra-yagya.jpg", "portrait"),
+    "tree-plantation": ("../assets/source/tree-plantation.jpg", "landscape"),
+    "community-meal": ("../assets/source/community-meal.jpg", "square"),
 }
 
 WIDTHS = {

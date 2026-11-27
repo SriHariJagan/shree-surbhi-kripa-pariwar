@@ -140,6 +140,38 @@ def pin_icon() -> str:
     return """<svg class="map-card__pin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.1 7-12A7 7 0 1 0 5 9c0 5.9 7 12 7 12Z" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.4"/></svg>"""
 
 
+def wheelchair_icon() -> str:
+    return """<svg class="welfare-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<circle cx="16" cy="4" r="1"/>
+<path d="m18 19 1-7-6 1"/>
+<path d="m5 8 3-3 5.5 3-2.36 3.5"/>
+<path d="M4.24 14.5a5 5 0 0 0 6.88 6"/>
+<path d="M13.76 17.5a5 5 0 0 0-6.88-6"/>
+</svg>"""
+
+
+def shloka_card(shloka: dict) -> str:
+    lines = "<br>".join(shloka["lines"])
+    translit = shloka.get("translit", "")
+    translit_html = f'<p class="shloka__translit" lang="en">{translit}</p>' if translit else ""
+    return f"""<article class="shloka reveal">
+<p class="shloka__source">{shloka['source']}</p>
+<p class="shloka__text" lang="sa">{lines}</p>
+{translit_html}
+<p class="shloka__meaning">{shloka['meaning']}</p>
+</article>"""
+
+
+def message_banner(block: dict, lang: str) -> str:
+    alt_lang = "hi" if lang == "en" else "en"
+    return f"""<div class="message-banner reveal">
+<p class="message-banner__label">{block['label']}</p>
+<p class="message-banner__quote">{block['quote']}</p>
+<p class="message-banner__alt" lang="{alt_lang}">{block['alt']}</p>
+<p class="message-banner__body">{block['body']}</p>
+</div>"""
+
+
 SOCIAL_PATHS = {
     "instagram": '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>',
     "facebook": '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 8.5H17V5h-2.5C12 5 10.5 6.7 10.5 9v2H8v3.5h2.5V22H14v-7.5h2.7L17 11h-3V9.3c0-.5.2-.8.5-.8Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>',
@@ -211,6 +243,7 @@ def head(lang: str, page_key: str, title: str, description: str, g: dict) -> str
     "name": g["name"],
     "description": g["footer_about"],
     "email": g["contact_email"],
+    "founder": {"@type": "Person", "name": g["founder_name"]},
     "address": {"@type": "PostalAddress", "addressLocality": "Gurugram", "addressRegion": "Haryana", "addressCountry": "IN"},
     "sameAs": [g["instagram"], g["facebook"], g["youtube"]],
 }, ensure_ascii=False)}</script>
@@ -279,7 +312,13 @@ def masthead(lang: str, page_key: str, g: dict) -> str:
 <a class="nav__cta" href="{href(lang, 'donate')}">{g['donate_cta']} <span aria-hidden="true">→</span></a>
 </nav>
 <button class="menu-toggle" type="button" data-menu-open aria-controls="site-menu" aria-expanded="false">
-<span></span><span class="sr-only">{g['menu_title']}</span>
+<svg class="menu-toggle__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+<path d="M3.5 7.5h17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M3.5 12h9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+<path class="menu-toggle__gem" d="M18 10.2 19.8 12 18 13.8 16.2 12Z"/>
+<path d="M3.5 16.5h17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+</svg>
+<span class="sr-only">{g['menu_title']}</span>
 </button>
 </div>
 </div>
@@ -328,6 +367,7 @@ def footer(lang: str, g: dict) -> str:
 <ul>
 {flink('home', g['nav']['home'])}
 {flink('about', g['nav']['about'])}
+{flink('about#philosophy', g['footer_philosophy'])}
 {flink('gallery', g['nav']['gallery'])}
 {flink('press', g['nav']['press'])}
 </ul>
@@ -336,6 +376,7 @@ def footer(lang: str, g: dict) -> str:
 <h3>{g['footer_seva']}</h3>
 <ul>
 {flink('seva', g['nav']['seva'])}
+{flink('seva#social-welfare', g['footer_welfare'])}
 {flink('donate', g['nav']['donate'])}
 {flink('contact#volunteer', g['footer_volunteer'])}
 {flink('contact#invite', g['footer_invite'])}
@@ -513,16 +554,29 @@ def field(
 
 
 def form(lang: str, g: dict, kind: str, subject: str, fields: list[str], submit: str, success: str) -> str:
-    email = g["contact_email"]
+    email = g.get("form_primary_email") or g["contact_email"]
+    endpoint = "https://formsubmit.co/ajax/" + email
+    cc = (g.get("form_cc") or "").strip()
+    hidden = [
+        f'<input type="hidden" name="_subject" value="{e(subject)}">',
+        '<input type="hidden" name="_template" value="table">',
+        '<input type="hidden" name="_captcha" value="false">',
+        '<input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">',
+    ]
+    if cc:
+        hidden.append(f'<input type="hidden" name="_cc" value="{e(cc)}">')
+    hidden_html = "\n".join(hidden)
     fields_html = "".join(fields)
     # Each form on a page reuses friendly field names; make ids unique per form.
     fields_html = fields_html.replace('id="f-', f'id="f-{kind}-').replace('for="f-', f'for="f-{kind}-')
-    return f"""<form class="form" data-form="{kind}" data-subject="{e(subject)}" action="mailto:{email}" method="post" enctype="text/plain">
+    return f"""<form class="form" data-form="{kind}" data-subject="{e(subject)}" data-email="{e(email)}" data-ajax="{e(endpoint)}" action="mailto:{e(email)}" method="post" enctype="text/plain">
+{hidden_html}
 {fields_html}
 <label class="form__consent"><input type="checkbox" name="Consent" required><span>{g['form_consent']}</span></label>
 <p class="form__hint">{g['form_required_note']}</p>
 <div class="form__actions"><button class="btn btn--dark" type="submit">{submit} <span class="btn__arrow" aria-hidden="true">→</span></button></div>
 <div class="form__success" data-success role="status">{success}</div>
+<div class="form__error" data-error role="alert">{g['form_error']}</div>
 </form>"""
 
 
@@ -631,6 +685,22 @@ def build_home(lang: str) -> str:
     tiers = "".join(f'<a class="tier" href="{href(lang, "donate")}">{t}</a>' for t in d["tiers"])
     tiers += f'<a class="tier" href="{href(lang, "donate")}">{d["tier_note"]}</a>'
 
+    init = p["initiatives"]
+    init_cards = ""
+    for item in init["items"]:
+        credit_html = f'<p class="img-credit">{item["credit"]}</p>' if item.get("credit") else ""
+        init_cards += f"""<article class="initiative-card reveal">
+<a class="initiative-card__media" href="{href(lang, item['href'])}" tabindex="-1" aria-hidden="true">{img(item['img'], item['alt'], lang, '(max-width: 760px) 92vw, 30vw')}</a>
+<div class="initiative-card__body">
+<h3>{item['title']}</h3>
+<p>{item['body']}</p>
+<div class="initiative-card__foot">
+<a class="link-arrow" href="{href(lang, item['href'])}">{item['link']}</a>
+{credit_html}
+</div>
+</div>
+</article>"""
+
     strip = "".join(
         f'<figure class="strip__item reveal">{img(item["img"], item["alt"], lang, "(max-width: 760px) 90vw, 33vw")}<figcaption>{item["caption"]}</figcaption></figure>'
         for item in p["strip"]["items"]
@@ -654,9 +724,9 @@ def build_home(lang: str) -> str:
 <div class="hero__meta">{stats}</div>
 </div>
 <figure class="hero__figure">
-<div class="arch arch--hero">{img('acharya-river', 'GauPremi Acharya Manish Ji standing by a mountain river with folded hands, wearing a yellow kurta and rudraksha malas.', lang, '(max-width: 760px) 90vw, 420px', cls='arch__img', priority=True)}</div>
+<div class="arch arch--hero">{img('acharya-river', 'Gopremi Acharya Manish Hari Ji standing by a mountain river with folded hands, wearing a yellow kurta and rudraksha malas.', lang, '(max-width: 760px) 90vw, 420px', cls='arch__img', priority=True)}</div>
 <div class="hero__overlap">
-{img('cow-embrace', 'Acharya Manish Ji embracing a white cow in a forest clearing.', lang, '220px')}
+{img('cow-embrace', 'Acharya Manish Hari Ji embracing a white cow in a forest clearing.', lang, '220px')}
 <span>{h['overlap_caption']}</span>
 </div>
 <figcaption class="hero__caption"><span>{h['caption_left']}</span><span>{h['caption_right']}</span></figcaption>
@@ -685,6 +755,12 @@ def build_home(lang: str) -> str:
 </div>
 </section>
 
+<section class="section section--maroon message-section grain">
+<div class="container">
+{message_banner(p['message'], lang)}
+</div>
+</section>
+
 <section class="section section--raised pillars grain">
 <div class="container">
 <div class="pillars__head reveal">
@@ -709,6 +785,16 @@ def build_home(lang: str) -> str:
 </div>
 <div class="mosaic__grid">{mosaic}</div>
 <div class="mosaic__link"><a class="link-arrow" href="{href(lang, 'gallery')}">{p['mosaic']['link']}</a></div>
+</div>
+</section>
+
+<section class="section section--raised initiatives">
+<div class="container">
+<div class="values__head reveal">
+<div><p class="eyebrow">{init['eyebrow']}</p><h2>{init['title']}</h2></div>
+<p class="pillars__head-note">{init['note']}</p>
+</div>
+<div class="initiative-grid">{init_cards}</div>
 </div>
 </section>
 
@@ -814,6 +900,15 @@ def build_about(lang: str) -> str:
         for q, src in p["press"]["quotes"]
     )
 
+    phil = p["philosophy"]
+    shlokas = "".join(shloka_card(s) for s in phil["shlokas"])
+    phil_banner = {
+        "label": phil["message_label"],
+        "quote": phil["message"],
+        "alt": phil["message_alt"],
+        "body": phil["message_body"],
+    }
+
     body = f"""
 {page_hero(lang, g, 'about', p['hero'])}
 
@@ -868,6 +963,23 @@ def build_about(lang: str) -> str:
 </div>
 </section>
 
+<section class="section section--raised philosophy" id="philosophy">
+<div class="container">
+<div class="values__head reveal">
+<div><p class="eyebrow">{phil['eyebrow']}</p><h2>{phil['title']}</h2></div>
+<p class="pillars__head-note">{phil['note']}</p>
+</div>
+<p class="philosophy__intro body-copy reveal">{phil['intro']}</p>
+<div class="shloka-grid">{shlokas}</div>
+</div>
+</section>
+
+<section class="section section--maroon message-section grain">
+<div class="container">
+{message_banner(phil_banner, lang)}
+</div>
+</section>
+
 <section class="section section--raised">
 <div class="container">
 <div class="values__head reveal">
@@ -901,10 +1013,13 @@ def build_seva(lang: str) -> str:
         includes = "".join(f"<li>{i}</li>" for i in b["includes"])
         media_cls = "seva-block__media seva-block__media--wide" if b["wide"] else "seva-block__media"
         rev = " seva-block--reverse" if b["reverse"] else ""
-        blocks += f"""<div class="seva-block{rev}">
+        id_attr = f' id="{b["id"]}"' if b.get("id") else ""
+        credit = f'<figcaption class="img-credit">{b["credit"]}</figcaption>' if b.get("credit") else ""
+        blocks += f"""<div class="seva-block{rev}"{id_attr}>
 <figure class="{media_cls} reveal">
 <span class="seva-block__index">{b['index']}</span>
 <div class="arch">{img(b['img'], b['alt'], lang, '(max-width: 760px) 90vw, 510px', cls='arch__img')}</div>
+{credit}
 </figure>
 <div class="seva-block__copy reveal reveal--delay-1">
 <p class="eyebrow">{b['eyebrow']}</p>
@@ -914,6 +1029,23 @@ def build_seva(lang: str) -> str:
 <div class="seva-block__actions"><a class="link-arrow" href="{href(lang, b['href'])}">{b['cta']}</a></div>
 </div>
 </div>"""
+
+    welfare = p["welfare"]
+    welfare_cards = ""
+    for item in welfare["items"]:
+        if item.get("img"):
+            media = img(item["img"], item["title"], lang, "(max-width: 760px) 92vw, 33vw", cls="welfare-card__img")
+        else:
+            media = wheelchair_icon()
+        credit_html = f'<p class="img-credit">{item["credit"]}</p>' if item.get("credit") else ""
+        welfare_cards += f"""<article class="welfare-card reveal">
+<div class="welfare-card__media">{media}</div>
+<div class="welfare-card__body">
+<h3>{item['title']}</h3>
+<p>{item['body']}</p>
+{credit_html}
+</div>
+</article>"""
 
     aside_cards = "".join(
         f"<article class=\"reveal\"><h3>{title}</h3><p>{body}</p></article>"
@@ -934,7 +1066,20 @@ def build_seva(lang: str) -> str:
 </div>
 </section>
 
-<section class="section section--raised">
+<section class="section section--raised welfare" id="social-welfare">
+<div class="container">
+<div class="values__head reveal">
+<div><p class="eyebrow">{welfare['eyebrow']}</p><h2>{welfare['title']}</h2></div>
+<p class="pillars__head-note">{welfare['note']}</p>
+</div>
+<p class="welfare__intro body-copy reveal">{welfare['intro']}</p>
+<div class="welfare-grid">{welfare_cards}</div>
+<p class="welfare__note note">{welfare['note_bottom']}</p>
+<div class="mosaic__link"><a class="link-arrow" href="{href(lang, welfare['href'])}">{welfare['cta']}</a></div>
+</div>
+</section>
+
+<section class="section">
 <div class="container">
 <div class="values__head reveal">
 <div><p class="eyebrow">{p['aside']['eyebrow']}</p><h2>{p['aside']['title']}</h2></div>

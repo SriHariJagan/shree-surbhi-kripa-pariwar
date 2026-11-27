@@ -246,7 +246,7 @@
     }, 1800);
   });
 
-  /* ---- Forms: compose an email without a backend ---------------------- */
+  /* ---- Forms: deliver by email without a server of our own ------------ */
   document.addEventListener("submit", function (event) {
     var form = event.target.closest("form[data-form]");
     if (!form) return;
@@ -255,26 +255,64 @@
     var data = new FormData(form);
     var lines = [];
     data.forEach(function (value, key) {
-      if (key === "_subject") return;
+      if (key.charAt(0) === "_") return;
       var text = String(value).trim();
       if (text) lines.push(key.replace(/([A-Z])/g, " $1").replace(/^./, function (c) { return c.toUpperCase(); }) + ": " + text);
     });
 
-    var address = (form.getAttribute("action") || "").replace(/^mailto:/i, "");
+    var email = form.getAttribute("data-email") || "";
     var subject = form.getAttribute("data-subject") || "Website enquiry";
-    var mailto = "mailto:" + address +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(lines.join("\n\n"));
-
-    window.location.href = mailto;
-
+    var endpoint = form.getAttribute("data-ajax") || "";
     var success = form.querySelector("[data-success]");
-    if (success) {
-      success.classList.add("is-visible");
-      success.setAttribute("tabindex", "-1");
-      success.focus({ preventScroll: true });
+    var error = form.querySelector("[data-error]");
+    var button = form.querySelector('button[type="submit"]');
+
+    function openMailApp() {
+      if (!email) return;
+      window.location.href = "mailto:" + email +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(lines.join("\n\n"));
     }
-    form.reset();
+
+    function show(el) {
+      if (success) success.classList.remove("is-visible");
+      if (error) error.classList.remove("is-visible");
+      if (!el) return;
+      el.classList.add("is-visible");
+      el.setAttribute("tabindex", "-1");
+      el.focus({ preventScroll: true });
+    }
+
+    if (!/^https?:/i.test(endpoint)) {
+      openMailApp();
+      show(success);
+      form.reset();
+      return;
+    }
+
+    if (button) button.disabled = true;
+    fetch(endpoint, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" }
+    })
+      .then(function (response) {
+        return response.json().then(function (payload) {
+          if (!response.ok || payload.success === "false") throw new Error("Delivery failed");
+          return payload;
+        });
+      })
+      .then(function () {
+        show(success);
+        form.reset();
+      })
+      .catch(function () {
+        openMailApp();
+        show(error);
+      })
+      .then(function () {
+        if (button) button.disabled = false;
+      });
   });
 
   /* ---- Open a linked accordion ---------------------------------------- */

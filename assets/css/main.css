@@ -97,6 +97,7 @@ html {
 }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 500; }
 h2 { font-size: var(--step-4); line-height: 1.02; letter-spacing: -.015em; }
+html[lang="hi"] h2 { font-family: var(--font-hindi); line-height: 1.3; letter-spacing: 0; }
 h3 { font-size: var(--step-2); line-height: 1.15; }
 p { text-wrap: pretty; }
 
@@ -452,27 +453,33 @@ html[lang="hi"] .brand__sub { font-family: var(--font-hindi); letter-spacing: .0
 
 .menu-toggle {
   display: none;
+  position: relative;
   width: 46px; height: 46px;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--line-strong);
-  background: transparent;
+  border: 1px solid var(--line-gold);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-paper-raised) 58%, transparent);
   color: var(--color-maroon);
+  transition: border-color var(--speed-fast), background var(--speed-fast);
 }
-.menu-toggle span {
-  position: relative;
-  display: block;
-  width: 18px; height: 1px;
-  background: currentColor;
-}
-.menu-toggle span::before, .menu-toggle span::after {
+.menu-toggle::after {
   content: "";
-  position: absolute; left: 0;
-  width: 18px; height: 1px;
-  background: currentColor;
+  position: absolute;
+  inset: 4px;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 24%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: border-color var(--speed-fast);
 }
-.menu-toggle span::before { top: -5px; }
-.menu-toggle span::after { top: 5px; }
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+  border-color: var(--color-gold);
+  background: var(--gold-wash);
+}
+.menu-toggle:hover::after { border-color: color-mix(in srgb, var(--color-gold) 45%, transparent); }
+.menu-toggle__icon { width: 23px; height: 23px; }
+.menu-toggle__gem { fill: var(--color-gold); }
 
 /* ---- Mobile menu -------------------------------------------------------- */
 .menu {
@@ -492,12 +499,22 @@ html[lang="hi"] .brand__sub { font-family: var(--font-hindi); letter-spacing: .0
 .menu__head { display: flex; align-items: center; justify-content: space-between; }
 .menu__brand { font-family: var(--font-hindi); font-size: 1.1rem; color: var(--color-gold-soft); }
 .menu__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 46px; height: 46px;
-  border: 1px solid var(--line-light);
+  border: 1px solid var(--line-gold);
+  border-radius: 50%;
   background: transparent;
-  color: var(--color-paper-raised);
+  color: var(--color-gold-soft);
   font-size: 1.4rem;
   line-height: 1;
+  transition: background var(--speed-fast), border-color var(--speed-fast);
+}
+.menu__close:hover,
+.menu__close:focus-visible {
+  border-color: var(--color-gold);
+  background: color-mix(in srgb, var(--color-gold) 14%, transparent);
 }
 .menu__nav { align-self: center; display: grid; gap: 4px; }
 .menu__link {
@@ -1623,18 +1640,16 @@ html[lang="hi"] .footer__col h3 { letter-spacing: .02em; text-transform: none; f
 .footer__watermark {
   position: relative;
   z-index: 1;
-  overflow: hidden;
-  height: clamp(70px, 11vw, 150px);
   display: flex;
-  align-items: start;
   justify-content: center;
+  padding-top: clamp(14px, 2.4vw, 28px);
   pointer-events: none;
 }
 .footer__watermark span {
   font-family: var(--font-hindi);
-  font-size: clamp(7rem, 18vw, 17rem);
-  line-height: .77;
-  color: color-mix(in srgb, var(--color-gold) 8%, transparent);
+  font-size: clamp(4.2rem, 11vw, 10rem);
+  line-height: 1.15;
+  color: color-mix(in srgb, var(--color-gold) 13%, transparent);
   white-space: nowrap;
 }
 
@@ -1811,6 +1826,82 @@ html[lang="hi"] .seva-block__copy h2 { font-family: var(--font-hindi); font-size
 .seva-aside h3 { font-size: 1.45rem; color: var(--color-maroon); }
 html[lang="hi"] .seva-aside h3 { font-family: var(--font-hindi); font-size: 1.2rem; }
 .seva-aside p { margin-top: 10px; font-size: .82rem; color: var(--color-ink-muted); }
+
+/* ---- Philosophy, inspiration and welfare -------------------------------- */
+.philosophy__intro { max-width: 70ch; margin-bottom: 34px; }
+.shloka-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.shloka {
+  padding: clamp(26px, 3.4vw, 42px);
+  background: var(--color-paper);
+  border: 1px solid var(--line);
+}
+.shloka__source { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--color-saffron); }
+.shloka__text {
+  margin-top: 18px;
+  font-family: var(--font-hindi);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.75;
+  color: var(--color-maroon);
+}
+.shloka__translit { margin-top: 14px; font-size: .74rem; font-style: italic; line-height: 1.6; color: var(--color-ink-faint); }
+.shloka__meaning { margin-top: 16px; font-size: .9rem; line-height: 1.7; color: var(--color-ink-muted); }
+
+.message-section { text-align: center; }
+.message-banner { max-width: 860px; margin-inline: auto; }
+.message-banner__label { font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--color-gold-soft); }
+.message-banner__quote {
+  margin-top: 20px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  line-height: 1.15;
+  color: var(--color-paper-raised);
+  text-wrap: balance;
+}
+html[lang="hi"] .message-banner__quote { font-family: var(--font-hindi); font-size: clamp(1.7rem, 3.6vw, 2.8rem); line-height: 1.4; }
+.message-banner__alt { margin-top: 14px; font-family: var(--font-hindi); font-size: 1rem; color: var(--color-gold-soft); }
+html[lang="hi"] .message-banner__alt { font-family: var(--font-display); font-style: italic; }
+.message-banner__body {
+  margin: 20px auto 0;
+  max-width: 58ch;
+  font-size: .95rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--color-paper-raised) 72%, transparent);
+}
+
+.initiative-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.initiative-card { display: flex; flex-direction: column; background: var(--color-paper); border: 1px solid var(--line); }
+.initiative-card__media { display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+.initiative-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+.initiative-card:hover .initiative-card__media img { transform: scale(1.04); }
+.initiative-card__body { display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 24px 22px 26px; }
+.initiative-card__body h3 { font-size: 1.4rem; color: var(--color-maroon); }
+html[lang="hi"] .initiative-card__body h3 { font-family: var(--font-hindi); font-size: 1.15rem; }
+.initiative-card__body p { font-size: .84rem; line-height: 1.65; color: var(--color-ink-muted); }
+.initiative-card__foot { display: grid; gap: 10px; margin-top: auto; }
+.initiative-card__foot .img-credit { margin-top: 0; }
+
+.welfare__intro { max-width: 70ch; margin-bottom: 32px; }
+.welfare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.welfare-card { display: flex; flex-direction: column; background: var(--color-paper); border: 1px solid var(--line); }
+.welfare-card__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-gold) 10%, var(--color-paper));
+  color: var(--color-saffron);
+}
+.welfare-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.welfare-card__icon { width: clamp(84px, 9vw, 120px); height: clamp(84px, 9vw, 120px); }
+.welfare-card__body { padding: 24px 22px 26px; }
+.welfare-card__body h3 { font-size: 1.4rem; color: var(--color-maroon); }
+html[lang="hi"] .welfare-card__body h3 { font-family: var(--font-hindi); font-size: 1.15rem; }
+.welfare-card__body p { margin-top: 10px; font-size: .84rem; line-height: 1.65; color: var(--color-ink-muted); }
+.welfare__note { margin-top: 26px; max-width: 70ch; }
+
+.img-credit { margin-top: 12px; font-size: .62rem; line-height: 1.5; color: var(--color-ink-faint); }
+.img-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- Gallery ------------------------------------------------------------ */
 .filters {
@@ -2154,6 +2245,18 @@ html[lang="hi"] .field label { letter-spacing: .02em; text-transform: none; font
   color: var(--color-maroon);
 }
 .form__success.is-visible { display: block; }
+.form__error {
+  display: none;
+  padding: 20px 22px;
+  border: 1px solid color-mix(in srgb, var(--color-saffron) 42%, transparent);
+  background: var(--saffron-wash);
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--color-maroon);
+}
+.form__error.is-visible { display: block; }
+.form__honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form button[type="submit"][disabled] { opacity: .65; cursor: progress; }
 
 .accordion-forms { margin-top: 44px; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .accordion-form { border-bottom: 1px solid var(--line); }
@@ -2245,6 +2348,7 @@ html[lang="hi"] .accordion-form > summary { font-family: var(--font-hindi); font
   .press__grid, .press-grid { grid-template-columns: repeat(2, 1fr); }
   .impact-list { grid-template-columns: repeat(2, 1fr); }
   .values__grid { grid-template-columns: repeat(2, 1fr); }
+  .initiative-grid, .welfare-grid { grid-template-columns: repeat(2, 1fr); }
   .donate-layout { grid-template-columns: 1fr; }
   .donate-layout__aside { position: static; }
   .payment-card { max-width: 640px; }
@@ -2354,6 +2458,8 @@ html[lang="hi"] .accordion-form > summary { font-family: var(--font-hindi); font
   .about-story__grid { grid-template-columns: 1fr; }
   .about-story__aside { position: static; width: min(100%, 320px); }
   .values__grid { grid-template-columns: 1fr 1fr; }
+  .initiative-grid, .welfare-grid { grid-template-columns: 1fr; }
+  .shloka-grid { grid-template-columns: 1fr; }
   .value { padding: 22px 16px; }
   .seva-block { grid-template-columns: 1fr; gap: 26px; padding-block: 42px; }
   .seva-block--reverse .seva-block__media, .seva-block--reverse .seva-block__copy { order: initial; }
