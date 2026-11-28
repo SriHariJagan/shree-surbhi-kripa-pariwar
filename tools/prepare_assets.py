@@ -18,6 +18,11 @@ BRAND = ROOT / "assets" / "brand"
 OUT.mkdir(parents=True, exist_ok=True)
 BRAND.mkdir(parents=True, exist_ok=True)
 MANIFEST = {}
+_manifest_path = OUT / "manifest.json"
+if _manifest_path.exists():
+    # Merge into the existing manifest so images whose source files are no
+    # longer present still keep their generated variants and entries.
+    MANIFEST = json.loads(_manifest_path.read_text(encoding="utf-8"))
 
 # ---------------------------------------------------------------------------
 # Source -> output map.  Keep the original WhatsApp files untouched.
@@ -47,6 +52,16 @@ ASSETS = {
     "hindu-sammelan": ("WhatsApp Image 2026-11-24 at 11.04.24 AM.jpeg", "portrait"),
     "civic-meeting": ("WhatsApp Image 2026-11-24 at 11.04.16 AM (1).jpeg", "landscape"),
     "vishwa-shanti": ("WhatsApp Image 2026-11-24 at 11.04.23 AM.jpeg", "portrait"),
+    # winter welfare drive (blankets, clothes & food distribution)
+    "winter-blanket-handover": ("WhatsApp Image 2026-11-27 at 10.49.00 PM (1).jpeg", "landscape"),
+    "winter-drive-banner": ("WhatsApp Image 2026-11-27 at 10.49.00 PM.jpeg", "landscape"),
+    "winter-elder-greeting": ("WhatsApp Image 2026-11-27 at 10.49.00 PM (2).jpeg", "landscape"),
+    "winter-blanket-gift": ("WhatsApp Image 2026-11-27 at 10.49.01 PM.jpeg", "landscape"),
+    "winter-group-elders": ("WhatsApp Image 2026-11-27 at 10.49.01 PM (1).jpeg", "landscape"),
+    "winter-cap-blessing": ("WhatsApp Image 2026-11-27 at 10.50.42 PM.jpeg", "landscape"),
+    "winter-blanket-mat": ("WhatsApp Image 2026-11-27 at 10.50.42 PM (1).jpeg", "portrait"),
+    "winter-blanket-shoulder": ("WhatsApp Image 2026-11-27 at 10.50.42 PM (2).jpeg", "landscape"),
+    "winter-community-hands": ("WhatsApp Image 2026-11-27 at 10.50.43 PM.jpeg", "landscape"),
     # press
     "press-feature": ("WhatsApp Image 2026-11-24 at 11.04.28 AM (2).jpeg", "landscape"),
     "press-cow": ("WhatsApp Image 2026-11-24 at 11.04.26 AM (1).jpeg", "landscape"),

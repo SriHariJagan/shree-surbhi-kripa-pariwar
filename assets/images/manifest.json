@@ -614,5 +614,198 @@
         "file": "community-meal-1280.webp"
       }
     ]
+  },
+  "winter-blanket-handover": {
+    "width": 1600,
+    "height": 900,
+    "default": "winter-blanket-handover.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "file": "winter-blanket-handover-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 608,
+        "file": "winter-blanket-handover-1080.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "file": "winter-blanket-handover-1600.webp"
+      }
+    ]
+  },
+  "winter-drive-banner": {
+    "width": 1600,
+    "height": 900,
+    "default": "winter-drive-banner.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "file": "winter-drive-banner-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 608,
+        "file": "winter-drive-banner-1080.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "file": "winter-drive-banner-1600.webp"
+      }
+    ]
+  },
+  "winter-elder-greeting": {
+    "width": 1280,
+    "height": 720,
+    "default": "winter-elder-greeting.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "file": "winter-elder-greeting-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 608,
+        "file": "winter-elder-greeting-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "file": "winter-elder-greeting-1280.webp"
+      }
+    ]
+  },
+  "winter-blanket-gift": {
+    "width": 1280,
+    "height": 720,
+    "default": "winter-blanket-gift.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "file": "winter-blanket-gift-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 608,
+        "file": "winter-blanket-gift-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "file": "winter-blanket-gift-1280.webp"
+      }
+    ]
+  },
+  "winter-group-elders": {
+    "width": 1280,
+    "height": 720,
+    "default": "winter-group-elders.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "file": "winter-group-elders-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 608,
+        "file": "winter-group-elders-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "file": "winter-group-elders-1280.webp"
+      }
+    ]
+  },
+  "winter-cap-blessing": {
+    "width": 1280,
+    "height": 960,
+    "default": "winter-cap-blessing.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 480,
+        "file": "winter-cap-blessing-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 810,
+        "file": "winter-cap-blessing-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 960,
+        "file": "winter-cap-blessing-1280.webp"
+      }
+    ]
+  },
+  "winter-blanket-mat": {
+    "width": 960,
+    "height": 1280,
+    "default": "winter-blanket-mat.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 853,
+        "file": "winter-blanket-mat-640.webp"
+      },
+      {
+        "width": 960,
+        "height": 1280,
+        "file": "winter-blanket-mat-960.webp"
+      }
+    ]
+  },
+  "winter-blanket-shoulder": {
+    "width": 1280,
+    "height": 960,
+    "default": "winter-blanket-shoulder.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 480,
+        "file": "winter-blanket-shoulder-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 810,
+        "file": "winter-blanket-shoulder-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 960,
+        "file": "winter-blanket-shoulder-1280.webp"
+      }
+    ]
+  },
+  "winter-community-hands": {
+    "width": 1280,
+    "height": 720,
+    "default": "winter-community-hands.webp",
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "file": "winter-community-hands-640.webp"
+      },
+      {
+        "width": 1080,
+        "height": 608,
+        "file": "winter-community-hands-1080.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "file": "winter-community-hands-1280.webp"
+      }
+    ]
   }
 }
